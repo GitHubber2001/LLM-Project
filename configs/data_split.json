@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "seed": 42,
+  "target_ratios": {
+    "train": 0.7,
+    "dev": 0.2,
+    "test": 0.1
+  },
+  "expected_rows": {
+    "train": 4852,
+    "dev": 1386,
+    "test": 693
+  },
+  "splitter": "scripts/split_xed_tr.py",
+  "canonical_data": "data/processed/xed_en_tr_aligned.tsv",
+  "split_directory": "data/splits",
+  "manifest": "data/splits/split_manifest.tsv"
+}

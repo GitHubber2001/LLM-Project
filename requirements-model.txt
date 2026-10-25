@@ -1,0 +1,7 @@
+# Optional dependencies for model-dependent stages only.
+# Install from an approved local/offline package source. This project never
+# downloads packages. Record exact executed versions in each run's metadata.
+torch
+transformers
+peft
+accelerate

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "condition": "turkish_peft",
+  "model_family": "qwen",
+  "training_languages": ["tr"],
+  "development_languages": ["tr"],
+  "train_data": "data/peft/turkish_peft_train.jsonl",
+  "dev_data": "data/peft/turkish_peft_dev.jsonl",
+  "method": "LoRA",
+  "lora": {
+    "target_modules": "all-linear",
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "bias": "none"
+  },
+  "learning_rate": 0.0002,
+  "optimizer": "adamw_torch",
+  "scheduler": "cosine",
+  "per_device_batch_size": 2,
+  "gradient_accumulation_steps": 8,
+  "effective_batch_size": 16,
+  "epochs": 3,
+  "maximum_sequence_length": 512,
+  "quantization": "none",
+  "checkpoint_selection": "lowest development loss",
+  "seed": 42,
+  "output_directory": "results/peft/checkpoints/turkish_peft"
+}

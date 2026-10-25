@@ -1,0 +1,14 @@
+experiment_id,status,model,condition,training_language,evaluation_language,split,micro_f1,sample_jaccard,macro_f1,micro_precision,micro_recall,hamming_loss,exact_match_ratio,malformed_output_rate,metrics_file,blocker
+qwen_zero_shot_en,BLOCKED,qwen,zero_shot,none,en,test,,,,,,,,,,Local Qwen checkpoint is not available
+qwen_zero_shot_tr,BLOCKED,qwen,zero_shot,none,tr,test,,,,,,,,,,Local Qwen checkpoint is not available
+qwen_five_shot_en,BLOCKED,qwen,five_shot,none,en,test,,,,,,,,,,Local Qwen checkpoint is not available
+qwen_five_shot_tr,BLOCKED,qwen,five_shot,none,tr,test,,,,,,,,,,Local Qwen checkpoint is not available
+gemma_zero_shot_en,BLOCKED,gemma,zero_shot,none,en,test,,,,,,,,,,Local Gemma checkpoint is not available
+gemma_zero_shot_tr,BLOCKED,gemma,zero_shot,none,tr,test,,,,,,,,,,Local Gemma checkpoint is not available
+gemma_five_shot_en,BLOCKED,gemma,five_shot,none,en,test,,,,,,,,,,Local Gemma checkpoint is not available
+gemma_five_shot_tr,BLOCKED,gemma,five_shot,none,tr,test,,,,,,,,,,Local Gemma checkpoint is not available
+qwen_english_peft_en,BLOCKED,qwen,english_peft,en,en,test,,,,,,,,,,Local Qwen checkpoint and trained adapter are not available
+qwen_english_peft_tr,BLOCKED,qwen,english_peft,en,tr,test,,,,,,,,,,Local Qwen checkpoint and trained adapter are not available
+qwen_turkish_peft_tr,BLOCKED,qwen,turkish_peft,tr,tr,test,,,,,,,,,,Local Qwen checkpoint and trained adapter are not available
+qwen_bilingual_peft_en,BLOCKED,qwen,bilingual_peft,en+tr,en,test,,,,,,,,,,Local Qwen checkpoint and trained adapter are not available
+qwen_bilingual_peft_tr,BLOCKED,qwen,bilingual_peft,en+tr,tr,test,,,,,,,,,,Local Qwen checkpoint and trained adapter are not available

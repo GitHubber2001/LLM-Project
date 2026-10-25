@@ -1,0 +1,95 @@
+{
+  "status": "DRAFT_NOT_FROZEN",
+  "version": 1,
+  "note": "Do not change this to FROZEN until local checkpoints exist and all DEV-only decisions are complete. TEST runners reject this draft status.",
+  "models": {
+    "qwen": {
+      "checkpoint_id": null,
+      "checkpoint_path": null,
+      "model_size": null,
+      "multilingual_suitability": null,
+      "license": null,
+      "accessibility": null,
+      "selection_justification": null,
+      "chat_template_mode": null,
+      "chat_template_sha256": null,
+      "roles": ["zero_shot", "five_shot", "english_peft", "turkish_peft", "bilingual_peft"]
+    },
+    "gemma": {
+      "checkpoint_id": null,
+      "checkpoint_path": null,
+      "model_size": null,
+      "multilingual_suitability": null,
+      "license": null,
+      "accessibility": null,
+      "selection_justification": null,
+      "chat_template_mode": null,
+      "chat_template_sha256": null,
+      "roles": ["zero_shot", "five_shot"]
+    }
+  },
+  "adapters": {
+    "english_peft": {"path": null, "sha256": null},
+    "turkish_peft": {"path": null, "sha256": null},
+    "bilingual_peft": {"path": null, "sha256": null}
+  },
+  "random_seeds": {
+    "data_split": 42,
+    "demonstrations": 42,
+    "prompting": 42,
+    "peft": 42
+  },
+  "prompt_version": "xed-json-v1",
+  "prompt_variant": null,
+  "prompt_selection_sha256": null,
+  "demonstration_alignment_ids": [
+    "en/1990/100216/4306033.xml.gz#1326=>tr/1990/100216/5193874.xml.gz#1346",
+    "en/1990/100405/4706696.xml.gz#2060=>tr/1990/100405/3993335.xml.gz#2039",
+    "en/1990/100263/7054028.xml.gz#354=>tr/1990/100263/4040065.xml.gz#352",
+    "en/1990/100514/3930419.xml.gz#566=>tr/1990/100514/5147341.xml.gz#570",
+    "en/1990/100232/4438698.xml.gz#94=>tr/1990/100232/6634134.xml.gz#93"
+  ],
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 64,
+    "num_beams": 1
+  },
+  "peft": {
+    "method": "LoRA",
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": "all-linear",
+    "learning_rate": 0.0002,
+    "optimizer": "adamw_torch",
+    "scheduler": "cosine",
+    "per_device_batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "effective_batch_size": 16,
+    "epochs": 3,
+    "maximum_sequence_length": 512,
+    "quantization": "none",
+    "checkpoint_selection": "lowest development loss"
+  },
+  "parser": {
+    "version": "strict-json-list-v1",
+    "case_normalization": true,
+    "whitespace_normalization": true,
+    "deduplicate_valid_labels": true,
+    "synonym_mapping": false,
+    "prose_recovery": false
+  },
+  "metrics": {
+    "label_order": ["anger", "anticipation", "disgust", "fear", "joy", "sadness", "surprise", "trust"],
+    "primary": ["micro_f1", "sample_jaccard"],
+    "secondary": ["macro_f1", "micro_precision", "micro_recall", "hamming_loss"],
+    "diagnostic": ["per_label_precision", "per_label_recall", "per_label_f1", "per_label_support", "exact_match_ratio", "malformed_output_rate"],
+    "zero_division": 0.0
+  },
+  "data": {
+    "test_path": "data/splits/test.tsv",
+    "test_sha256": "2373682101c9b712f98d047dde88eb58db81260d02f3c33754807b5a44b53326",
+    "five_shot_path": "configs/five_shot_examples.json",
+    "five_shot_sha256": null
+  }
+}

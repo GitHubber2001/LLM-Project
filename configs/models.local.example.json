@@ -1,0 +1,21 @@
+{
+  "qwen": {
+    "checkpoint_id": null,
+    "checkpoint_path": null,
+    "model_size": null,
+    "multilingual_suitability": null,
+    "license": null,
+    "accessibility": null,
+    "selection_justification": null
+  },
+  "gemma": {
+    "checkpoint_id": null,
+    "checkpoint_path": null,
+    "model_size": null,
+    "multilingual_suitability": null,
+    "license": null,
+    "accessibility": null,
+    "selection_justification": null
+  },
+  "notes": "Copy this file to configs/models.local.json and fill every field from the actual local checkpoint documentation/files. Paths must remain inside this repository. Remote identifiers and downloads are refused."
+}

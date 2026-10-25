@@ -1,0 +1,54 @@
+# Local model checkpoints and weight files
+models/
+local_models/
+model_checkpoints/
+checkpoints/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.gguf
+pytorch_model*.bin
+adapter_model*.bin
+
+# Machine-specific model configuration and tokenizer compatibility records
+configs/models.local.json
+configs/chat_templates.local.json
+
+# Trained PEFT checkpoints/adapters
+results/peft/checkpoints/
+
+# Python environments, bytecode, and tool caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Local secrets and environment overrides
+.env
+.env.*
+!.env.example
+
+# Temporary, partial, log, and editor artifacts
+*.partial
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+.cache/
+.tmp/
+tmp/
+
+# macOS metadata
+.DS_Store
+._*

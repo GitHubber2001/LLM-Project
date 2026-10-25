@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "seed": 42,
+  "source_split": "train",
+  "source_file": "data/splits/train.tsv",
+  "source_sha256": "0cb65716e900124d5ab384438eb80a39c5aa782f9674e723a9f35a1868d2ad85",
+  "selection_procedure": "TRAIN-only deterministic greedy coverage: maximize the number of new emotion labels, then inverse-frequency weight of new labels, then prefer shorter combined English/Turkish text and alignment ID; candidates contain at most two labels and selected examples cannot repeat exact English or Turkish text",
+  "length_filter_characters_per_language": {
+    "minimum": 8,
+    "maximum": 160
+  },
+  "maximum_labels_per_example": 2,
+  "covered_labels": [
+    "anger",
+    "anticipation",
+    "disgust",
+    "fear",
+    "joy",
+    "sadness",
+    "surprise",
+    "trust"
+  ],
+  "examples": [
+    {
+      "selection_rank": 1,
+      "alignment_id": "en/1990/100216/4306033.xml.gz#1326=>tr/1990/100216/5193874.xml.gz#1346",
+      "english_text": "What horror!",
+      "turkish_text": "Korkunç!",
+      "gold_labels": [
+        "disgust",
+        "fear"
+      ]
+    },
+    {
+      "selection_rank": 2,
+      "alignment_id": "en/1990/100405/4706696.xml.gz#2060=>tr/1990/100405/3993335.xml.gz#2039",
+      "english_text": "I can't.",
+      "turkish_text": "Yapamam.",
+      "gold_labels": [
+        "sadness",
+        "surprise"
+      ]
+    },
+    {
+      "selection_rank": 3,
+      "alignment_id": "en/1990/100263/7054028.xml.gz#354=>tr/1990/100263/4040065.xml.gz#352",
+      "english_text": "Perfect.",
+      "turkish_text": "Mükemmel.",
+      "gold_labels": [
+        "joy",
+        "trust"
+      ]
+    },
+    {
+      "selection_rank": 4,
+      "alignment_id": "en/1990/100514/3930419.xml.gz#566=>tr/1990/100514/5147341.xml.gz#570",
+      "english_text": "Shoot her.",
+      "turkish_text": "Vur onu.",
+      "gold_labels": [
+        "anger",
+        "anticipation"
+      ]
+    },
+    {
+      "selection_rank": 5,
+      "alignment_id": "en/1990/100232/4438698.xml.gz#94=>tr/1990/100232/6634134.xml.gz#93",
+      "english_text": "Hawkins!",
+      "turkish_text": "Hawkins!",
+      "gold_labels": [
+        "fear"
+      ]
+    }
+  ]
+}

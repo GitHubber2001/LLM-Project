@@ -1,11 +1,14 @@
 {
   "version": 1,
-  "status": "DRAFT_DEV_SELECTION_PENDING",
+  "status": "DEV_SELECTED",
   "prompt_version": "xed-json-v1",
   "prompt_sensitivity_config": "configs/prompt_sensitivity.json",
-  "candidate_variants": ["definitions_v1", "compact_v1"],
-  "selected_variant": null,
-  "selection_artifact": null,
+  "candidate_variants": [
+    "definitions_v1",
+    "compact_v1"
+  ],
+  "selected_variant": "definitions_v1",
+  "selection_artifact": "results/prompting/prompt_sensitivity/selection.json",
   "parser_version": "strict-json-list-v1",
   "seed": 42,
   "decoding": {

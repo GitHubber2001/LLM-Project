@@ -293,6 +293,7 @@ def main() -> None:
         local_files_only=True,
         trust_remote_code=False,
         torch_dtype="auto",
+        attn_implementation="eager",
     )
     if torch.cuda.is_available():
         device = torch.device("cuda")

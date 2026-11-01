@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "status": "COMPLETED",
+  "created_at_utc": "2026-10-31T01:00:07.390064+00:00",
+  "split": "dev",
+  "model": "qwen",
+  "condition": "zero_shot",
+  "checkpoint_id": "Qwen/Qwen2.5-3B-Instruct",
+  "prompt_config_sha256": "4f9908e3c7170e7c7a453b21f32e2c97a7c1644ba96db9829249c67decda8222",
+  "languages": [
+    "en",
+    "tr"
+  ],
+  "selection_rule": {
+    "primary": "highest mean micro_f1 across English and Turkish DEV",
+    "tie_break_1": "highest mean sample_jaccard across English and Turkish DEV",
+    "tie_break_2": "lowest mean malformed_output_rate across English and Turkish DEV",
+    "tie_break_3": "lexicographically smallest variant id for an exact numerical tie"
+  },
+  "summaries": [
+    {
+      "variant": "definitions_v1",
+      "mean_micro_f1": 0.26544074111504473,
+      "mean_sample_jaccard": 0.19835257335257328,
+      "mean_malformed_output_rate": 0.04076479076479077,
+      "metric_files": [
+        "results/metrics/qwen_en_zero_definitions_dev_overall.json",
+        "results/metrics/qwen_tr_zero_definitions_dev_overall.json"
+      ]
+    },
+    {
+      "variant": "compact_v1",
+      "mean_micro_f1": 0.24925216536327272,
+      "mean_sample_jaccard": 0.19330206830206828,
+      "mean_malformed_output_rate": 0.01948051948051948,
+      "metric_files": [
+        "results/metrics/qwen_en_zero_compact_dev_overall.json",
+        "results/metrics/qwen_tr_zero_compact_dev_overall.json"
+      ]
+    }
+  ],
+  "selected_variant": "definitions_v1",
+  "plan_sha256": "3e240c53a06b3e4613ecd97f26c06adc2428c599414d06ce986b666f9cf4f777",
+  "note": "Selected using DEV only. Freeze this choice before TEST."
+}

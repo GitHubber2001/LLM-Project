@@ -173,9 +173,12 @@ class ArtifactTests(unittest.TestCase):
         prompt_config = json.loads(
             (ROOT / "configs" / "prompting.json").read_text(encoding="utf-8")
         )
-        self.assertEqual(prompt_config["status"], "DRAFT_DEV_SELECTION_PENDING")
-        self.assertIsNone(prompt_config["selected_variant"])
-        self.assertIsNone(prompt_config["selection_artifact"])
+        self.assertEqual(prompt_config["status"], "DEV_SELECTED")
+        self.assertEqual(prompt_config["selected_variant"], "definitions_v1")
+        self.assertEqual(
+            prompt_config["selection_artifact"],
+            "results/prompting/prompt_sensitivity/selection.json",
+        )
 
     def test_local_model_artifacts_are_ignored(self) -> None:
         rules = (ROOT / ".gitignore").read_text(encoding="utf-8")

@@ -1,10 +1,13 @@
 {
   "version": 1,
-  "status": "PLANNED_BLOCKED_NO_LOCAL_QWEN_CHECKPOINT",
+  "status": "COMPLETED",
   "split": "dev",
   "model_family": "qwen",
   "condition": "zero_shot",
-  "languages": ["en", "tr"],
+  "languages": [
+    "en",
+    "tr"
+  ],
   "variants": [
     {
       "id": "definitions_v1",
@@ -29,6 +32,8 @@
     "tie_break_2": "lowest mean malformed_output_rate across English and Turkish DEV",
     "tie_break_3": "lexicographically smallest variant id for an exact numerical tie"
   },
-  "output": "results/prompt_sensitivity/selection.json",
-  "test_policy": "TEST is prohibited during comparison. The selected variant must be recorded and frozen before any TEST run."
+  "output": "results/prompting/prompt_sensitivity/selection.json",
+  "test_policy": "TEST is prohibited during comparison. The selected variant must be recorded and frozen before any TEST run.",
+  "selected_variant": "definitions_v1",
+  "selection_artifact": "results/prompting/prompt_sensitivity/selection.json"
 }

@@ -1,21 +1,20 @@
 {
   "qwen": {
-    "checkpoint_id": null,
-    "checkpoint_path": null,
-    "model_size": null,
-    "multilingual_suitability": null,
-    "license": null,
-    "accessibility": null,
-    "selection_justification": null
+    "checkpoint_id": "Qwen/Qwen2.5-3B-Instruct",
+    "checkpoint_path": "models/qwen",
+    "model_size": "3B",
+    "multilingual_suitability": "Candidate model for English-Turkish emotion classification. Suitability will be evaluated on the development set.",
+    "license": "Qwen Research License",
+    "accessibility": "Public Hugging Face repository; checkpoint stored locally.",
+    "selection_justification": "Primary model for zero-shot prompting, five-shot prompting, and all three PEFT conditions. Selected based on model size, multilingual coverage, instruction-following capabilities, and compatibility with the available hardware."
   },
   "gemma": {
-    "checkpoint_id": null,
-    "checkpoint_path": null,
-    "model_size": null,
-    "multilingual_suitability": null,
-    "license": null,
-    "accessibility": null,
-    "selection_justification": null
-  },
-  "notes": "Copy this file to configs/models.local.json and fill every field from the actual local checkpoint documentation/files. Paths must remain inside this repository. Remote identifiers and downloads are refused."
+    "checkpoint_id": "google/gemma-2-2b-it",
+    "checkpoint_path": "models/gemma",
+    "model_size": "2B",
+    "multilingual_suitability": "Candidate model for English-Turkish prompting comparison. Suitability will be evaluated on the development set.",
+    "license": "Gemma Terms of Use",
+    "accessibility": "Gated Hugging Face repository; checkpoint stored locally.",
+    "selection_justification": "Secondary model for zero-shot and five-shot prompting only, used to compare prompting performance across two model families."
+  }
 }

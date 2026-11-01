@@ -9,14 +9,15 @@ Completed:
 - fixed 70/20/10 TRAIN/DEV/TEST split with seed 42
 - leakage validation
 - five fixed TRAIN examples for five-shot prompting
+- Qwen and Gemma local checkpoint selection and loading
+- DEV-only prompt sensitivity comparison; `definitions_v1` selected
+- all eight Qwen/Gemma zero-shot and five-shot DEV experiments and evaluations
 - prompting, parsing, evaluation, and LoRA training code
 - Qwen/Gemma experiment configs
 
 Not completed yet:
-- exact local Qwen and Gemma checkpoint selection
-- DEV prompt comparison
-- Qwen LoRA training
-- final TEST model evaluation and metrics
+- Qwen LoRA training and DEV evaluation
+- final TEST evaluation and metrics
 
 ## Folder structure
 
@@ -31,7 +32,7 @@ data/peft/               generated LoRA training JSONL (create locally)
 subtitle-retrieval/      minimum XED EN-TR source files needed by our preparation code
 Projections/             Turkish XED projection file kept as source/reference
 docs/                    walkthrough, data audit, runbook, prompt plan, course brief
-results/                 experiment outputs and master result table
+results/                 experiment predictions, metrics, prompt sensitivity results, and master result table
 ```
 
 The full upstream XED repository is intentionally not included. Files for unrelated languages, the legacy BERT notebook, generated PEFT JSONL files, model weights, adapters, report drafts, and presentation drafts were left out.
@@ -63,6 +64,23 @@ Qwen is the primary model:
 Gemma is the secondary model:
 - zero-shot prompting
 - five-shot prompting
+
+The selected model checkpoints are:
+- Qwen: `Qwen/Qwen2.5-3B-Instruct`
+- Gemma: `google/gemma-2-2b-it`
+
+Model weights must be downloaded locally before running the experiments.
+
+Download Qwen:
+`hf download Qwen/Qwen2.5-3B-Instruct --local-dir models/qwen`
+
+Download Gemma (Hugging Face access approval required):
+`hf auth login`
+`hf download google/gemma-2-2b-it --local-dir models/gemma`
+
+Create the local model configuration:
+`cp configs/models.local.example.json configs/models.local.json`
+
 
 The exact commands and DEV-before-TEST workflow are in `docs/RUNBOOK.md`.
 

@@ -69,13 +69,20 @@ def smoke_mode(tokenizer: Any, mode: str, prompt_variant: str) -> dict[str, str]
         rendered = tokenizer.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=True
         )
-        token_ids = tokenizer.apply_chat_template(
+        token_output = tokenizer.apply_chat_template(
             messages, tokenize=True, add_generation_prompt=True
+        )
+        token_ids = (
+            token_output["input_ids"]
+            if hasattr(token_output, "input_ids")
+            else token_output
         )
         if not isinstance(rendered, str) or instruction not in rendered:
             raise ValueError(f"{name}: rendered prompt lost the English instruction")
         if "A tokenizer-only smoke test." not in rendered:
             raise ValueError(f"{name}: rendered prompt lost the target subtitle")
+        if hasattr(token_ids, "tolist"):
+            token_ids = token_ids.tolist()
         if not isinstance(token_ids, list) or not token_ids or not all(
             isinstance(value, int) for value in token_ids
         ):

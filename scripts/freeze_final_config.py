@@ -20,9 +20,9 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from xed_project.io_utils import write_json_atomic  # noqa: E402
 from xed_project.chat_templates import CHAT_TEMPLATE_MODES  # noqa: E402
 from xed_project.constants import PROMPT_VERSION  # noqa: E402
+from xed_project.io_utils import write_json_atomic  # noqa: E402
 from xed_project.prompting import PROMPT_INSTRUCTIONS  # noqa: E402
 
 
@@ -156,9 +156,11 @@ def main() -> None:
         prompt_config.get("selection_artifact"), "prompt-selection artifact"
     )
     selection = load_json(selection_path)
-    if selection.get("status") != "COMPLETED" or selection.get(
-        "selected_variant"
-    ) != selected_variant or selection.get("split") != "dev":
+    if (
+        selection.get("status") != "COMPLETED"
+        or selection.get("selected_variant") != selected_variant
+        or selection.get("split") != "dev"
+    ):
         raise ValueError("Prompt-selection artifact is incomplete or inconsistent")
     config["prompt_version"] = PROMPT_VERSION
     config["prompt_variant"] = selected_variant
@@ -174,7 +176,7 @@ def main() -> None:
         metadata = load_json(metadata_path)
         if metadata.get("status") != "COMPLETED":
             raise ValueError(f"Adapter run is not completed: {condition}")
-        adapter_path = local_path(run_dir / "best_adapter", f"{condition} adapter")
+        adapter_path = local_path(str(run_dir / "best_adapter"), f"{condition} adapter")
         adapters[condition] = {
             "path": str(adapter_path.relative_to(ROOT)),
             "sha256": sha256_tree(adapter_path),

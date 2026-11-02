@@ -70,7 +70,8 @@ def main() -> None:
         value = metrics.get(metric)
         row[metric] = "" if value is None else str(value)
     row["status"] = "COMPLETED"
-    row["metrics_file"] = str(args.metrics.relative_to(ROOT))
+    metrics_path = args.metrics.resolve()
+    row["metrics_file"] = str(metrics_path.relative_to(ROOT.resolve()))
     row["blocker"] = ""
     write_csv_atomic(args.master, fields, rows)
     print(f"updated {experiment_id} in {args.master}")

@@ -1,14 +1,14 @@
 experiment_id,status,model,condition,training_language,evaluation_language,split,micro_f1,sample_jaccard,macro_f1,micro_precision,micro_recall,hamming_loss,exact_match_ratio,malformed_output_rate,metrics_file,blocker
-qwen_zero_shot_en,BLOCKED,qwen,zero_shot,none,en,test,,,,,,,,,,Local Qwen checkpoint is not available
-qwen_zero_shot_tr,BLOCKED,qwen,zero_shot,none,tr,test,,,,,,,,,,Local Qwen checkpoint is not available
-qwen_five_shot_en,BLOCKED,qwen,five_shot,none,en,test,,,,,,,,,,Local Qwen checkpoint is not available
-qwen_five_shot_tr,BLOCKED,qwen,five_shot,none,tr,test,,,,,,,,,,Local Qwen checkpoint is not available
-gemma_zero_shot_en,BLOCKED,gemma,zero_shot,none,en,test,,,,,,,,,,Local Gemma checkpoint is not available
-gemma_zero_shot_tr,BLOCKED,gemma,zero_shot,none,tr,test,,,,,,,,,,Local Gemma checkpoint is not available
-gemma_five_shot_en,BLOCKED,gemma,five_shot,none,en,test,,,,,,,,,,Local Gemma checkpoint is not available
-gemma_five_shot_tr,BLOCKED,gemma,five_shot,none,tr,test,,,,,,,,,,Local Gemma checkpoint is not available
-qwen_english_peft_en,BLOCKED,qwen,english_peft,en,en,test,,,,,,,,,,Local Qwen checkpoint and trained adapter are not available
-qwen_english_peft_tr,BLOCKED,qwen,english_peft,en,tr,test,,,,,,,,,,Local Qwen checkpoint and trained adapter are not available
-qwen_turkish_peft_tr,BLOCKED,qwen,turkish_peft,tr,tr,test,,,,,,,,,,Local Qwen checkpoint and trained adapter are not available
-qwen_bilingual_peft_en,BLOCKED,qwen,bilingual_peft,en+tr,en,test,,,,,,,,,,Local Qwen checkpoint and trained adapter are not available
-qwen_bilingual_peft_tr,BLOCKED,qwen,bilingual_peft,en+tr,tr,test,,,,,,,,,,Local Qwen checkpoint and trained adapter are not available
+qwen_zero_shot_en,COMPLETED,qwen,zero_shot,none,en,test,0.41018941868060094,0.34571909571909576,0.38470267590286267,0.5688405797101449,0.32073544433094997,0.16287878787878787,0.26406926406926406,0.03607503607503607,results/metrics/qwen_zero_shot_en_overall.json,
+qwen_zero_shot_tr,COMPLETED,qwen,zero_shot,none,tr,test,0.1944235116804823,0.1406926406926407,0.17790789532486556,0.3706896551724138,0.1317671092951992,0.1928210678210678,0.1038961038961039,0.02886002886002886,results/metrics/qwen_zero_shot_tr_overall.json,
+qwen_five_shot_en,COMPLETED,qwen,five_shot,none,en,test,0.4235955056179775,0.3531746031746033,0.3851335499321168,0.4706616729088639,0.38508682328907046,0.18506493506493507,0.2178932178932179,0.015873015873015872,results/metrics/qwen_five_shot_en_overall.json,
+qwen_five_shot_tr,COMPLETED,qwen,five_shot,none,tr,test,0.33659066232356133,0.28730158730158734,0.2799625642878988,0.35921205098493625,0.3166496424923391,0.22041847041847043,0.17893217893217894,0.0,results/metrics/qwen_five_shot_tr_overall.json,
+gemma_zero_shot_en,COMPLETED,gemma,zero_shot,none,en,test,0.4571766095688128,0.4141414141414142,0.4336380827230011,0.542016806722689,0.3953013278855976,0.16576479076479075,0.3189033189033189,0.0,results/metrics/gemma_zero_shot_en_overall.json,
+gemma_zero_shot_tr,COMPLETED,gemma,zero_shot,none,tr,test,0.3415492957746479,0.29978354978354976,0.3168621941690202,0.4013793103448276,0.2972420837589377,0.20238095238095238,0.2049062049062049,0.002886002886002886,results/metrics/gemma_zero_shot_tr_overall.json,
+gemma_five_shot_en,COMPLETED,gemma,five_shot,none,en,test,0.48688046647230315,0.4229437229437228,0.46776315604527097,0.4643188137164041,0.5117466802860061,0.19047619047619047,0.24963924963924963,0.0,results/metrics/gemma_five_shot_en_overall.json,
+gemma_five_shot_tr,COMPLETED,gemma,five_shot,none,tr,test,0.3559718969555036,0.2829485329485329,0.35114992171663495,0.328719723183391,0.3881511746680286,0.24801587301587302,0.1240981240981241,0.0,results/metrics/gemma_five_shot_tr_overall.json,
+qwen_english_peft_en,COMPLETED,qwen,english_peft,en,en,test,0.4667033571821684,0.42412217412217423,0.4262051431068579,0.5059665871121718,0.4330949948927477,0.1747835497835498,0.29292929292929293,0.0,results/metrics/qwen_english_peft_en_overall.json,
+qwen_english_peft_tr,COMPLETED,qwen,english_peft,en,tr,test,0.30708215297450425,0.27898027898027894,0.24378384277633752,0.34478371501272265,0.27681307456588355,0.2205988455988456,0.1976911976911977,0.0,results/metrics/qwen_english_peft_tr_overall.json,
+qwen_turkish_peft_tr,COMPLETED,qwen,turkish_peft,tr,tr,test,0.30414746543778803,0.28174603174603174,0.20770305832095665,0.3487450462351387,0.2696629213483146,0.2178932178932179,0.21356421356421357,0.0,results/metrics/qwen_turkish_peft_tr_overall.json,
+qwen_bilingual_peft_en,COMPLETED,qwen,bilingual_peft,en+tr,en,test,0.47707423580786024,0.4468494468494468,0.43032795882805935,0.5123094958968347,0.4463738508682329,0.17279942279942279,0.32611832611832614,0.0,results/metrics/qwen_bilingual_peft_en_overall.json,
+qwen_bilingual_peft_tr,COMPLETED,qwen,bilingual_peft,en+tr,tr,test,0.35306898424769145,0.3183020683020683,0.3058091279313225,0.37703016241299303,0.3319713993871297,0.21482683982683984,0.215007215007215,0.0,results/metrics/qwen_bilingual_peft_tr_overall.json,

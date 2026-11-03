@@ -1,0 +1,22 @@
+{
+  "experiment_id": "qwen_bilingual_peft_tr",
+  "status": "COMPLETED",
+  "language": "tr",
+  "model": "qwen",
+  "checkpoint_id": "Qwen/Qwen2.5-3B-Instruct",
+  "condition": "bilingual_peft",
+  "split": "test",
+  "predictions_file": "results/predictions/qwen_bilingual_peft_tr_test.jsonl",
+  "num_examples": 693,
+  "label_order": "anger,anticipation,disgust,fear,joy,sadness,surprise,trust",
+  "zero_division": 0.0,
+  "micro_f1": 0.35306898424769145,
+  "sample_jaccard": 0.3183020683020683,
+  "macro_f1": 0.3058091279313225,
+  "micro_precision": 0.37703016241299303,
+  "micro_recall": 0.3319713993871297,
+  "hamming_loss": 0.21482683982683984,
+  "exact_match_ratio": 0.215007215007215,
+  "malformed_count": 0,
+  "malformed_output_rate": 0.0
+}

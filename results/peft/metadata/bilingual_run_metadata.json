@@ -1,0 +1,65 @@
+{
+  "status": "COMPLETED",
+  "base_model_checkpoint_id": "Qwen/Qwen2.5-3B-Instruct",
+  "base_model_checkpoint_path": "models/qwen",
+  "condition": "bilingual_peft",
+  "configuration": {
+    "version": 1,
+    "condition": "bilingual_peft",
+    "model_family": "qwen",
+    "training_languages": [
+      "en",
+      "tr"
+    ],
+    "development_languages": [
+      "en",
+      "tr"
+    ],
+    "train_data": "data/peft/bilingual_peft_train.jsonl",
+    "dev_data": "data/peft/bilingual_peft_dev.jsonl",
+    "method": "LoRA",
+    "lora": {
+      "target_modules": "all-linear",
+      "rank": 16,
+      "alpha": 32,
+      "dropout": 0.05,
+      "bias": "none"
+    },
+    "learning_rate": 0.0002,
+    "optimizer": "adamw_torch",
+    "scheduler": "cosine",
+    "per_device_batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "effective_batch_size": 16,
+    "epochs": 3,
+    "maximum_sequence_length": 512,
+    "quantization": "none",
+    "checkpoint_selection": "lowest combined English-Turkish development loss",
+    "seed": 42,
+    "bilingual_combination": "Create one English and one Turkish example for every alignment, then shuffle the combined records once with seed 42.",
+    "output_directory": "results/peft/checkpoints/bilingual_peft"
+  },
+  "train_examples": 9704,
+  "development_examples": 2772,
+  "best_checkpoint": "/scratch/s5051150/llm_xed_project/results/peft/checkpoints/bilingual_peft/checkpoint-607",
+  "best_metric": 0.41648048162460327,
+  "train_metrics": {
+    "train_runtime": 3351.2403,
+    "train_samples_per_second": 8.687,
+    "train_steps_per_second": 0.543,
+    "total_flos": 9.902193113358336e+16,
+    "train_loss": 0.23176975298687236,
+    "epoch": 3.0
+  },
+  "software_versions": {
+    "python": "3.9.25",
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.17.1"
+  },
+  "runtime": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "device": "NVIDIA A100-PCIE-40GB"
+  }
+}

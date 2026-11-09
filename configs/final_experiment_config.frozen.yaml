@@ -1,0 +1,138 @@
+{
+  "status": "FROZEN",
+  "version": 1,
+  "note": "Frozen after DEV-only decisions. Do not modify in response to TEST results.",
+  "models": {
+    "qwen": {
+      "checkpoint_id": "Qwen/Qwen2.5-3B-Instruct",
+      "checkpoint_path": "models/qwen",
+      "model_size": "3B",
+      "multilingual_suitability": "Candidate model for English-Turkish emotion classification. Suitability will be evaluated on the development set.",
+      "license": "Qwen Research License",
+      "accessibility": "Public Hugging Face repository; checkpoint stored locally.",
+      "selection_justification": "Primary model for zero-shot prompting, five-shot prompting, and all three PEFT conditions. Selected based on model size, multilingual coverage, instruction-following capabilities, and compatibility with the available hardware.",
+      "chat_template_mode": "system",
+      "chat_template_sha256": "cd8e9439f0570856fd70470bf8889ebd8b5d1107207f67a5efb46e342330527f",
+      "roles": [
+        "zero_shot",
+        "five_shot",
+        "english_peft",
+        "turkish_peft",
+        "bilingual_peft"
+      ]
+    },
+    "gemma": {
+      "checkpoint_id": "google/gemma-2-2b-it",
+      "checkpoint_path": "models/gemma",
+      "model_size": "2B",
+      "multilingual_suitability": "Candidate model for English-Turkish prompting comparison. Suitability will be evaluated on the development set.",
+      "license": "Gemma Terms of Use",
+      "accessibility": "Gated Hugging Face repository; checkpoint stored locally.",
+      "selection_justification": "Secondary model for zero-shot and five-shot prompting only, used to compare prompting performance across two model families.",
+      "chat_template_mode": "user_preamble",
+      "chat_template_sha256": "ecd6ae513fe103f0eb62e8ab5bfa8d0fe45c1074fa398b089c93a7e70c15cfd6",
+      "roles": [
+        "zero_shot",
+        "five_shot"
+      ]
+    }
+  },
+  "adapters": {
+    "english_peft": {
+      "path": "results/peft/checkpoints/english_peft/best_adapter",
+      "sha256": "8648f40d84068c4c972643117f1e8e1f156c7789ece9fa30cce6f19609b4a92f"
+    },
+    "turkish_peft": {
+      "path": "results/peft/checkpoints/turkish_peft/best_adapter",
+      "sha256": "b09142e213be25e3e3e12b9eeb58746a4adb2db3f571dc2921b6174413903052"
+    },
+    "bilingual_peft": {
+      "path": "results/peft/checkpoints/bilingual_peft/best_adapter",
+      "sha256": "a423bfe616dc32b4d6b801db35ddb838b32b511dd34799282402f7a5768e2402"
+    }
+  },
+  "random_seeds": {
+    "data_split": 42,
+    "demonstrations": 42,
+    "prompting": 42,
+    "peft": 42
+  },
+  "prompt_version": "xed-json-v1",
+  "prompt_variant": "definitions_v1",
+  "prompt_selection_sha256": "cb70e14ff6171301cfe797e41c063c20f5cac95b9273732dce26649d0379e0ee",
+  "demonstration_alignment_ids": [
+    "en/1990/100216/4306033.xml.gz#1326=>tr/1990/100216/5193874.xml.gz#1346",
+    "en/1990/100405/4706696.xml.gz#2060=>tr/1990/100405/3993335.xml.gz#2039",
+    "en/1990/100263/7054028.xml.gz#354=>tr/1990/100263/4040065.xml.gz#352",
+    "en/1990/100514/3930419.xml.gz#566=>tr/1990/100514/5147341.xml.gz#570",
+    "en/1990/100232/4438698.xml.gz#94=>tr/1990/100232/6634134.xml.gz#93"
+  ],
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 64,
+    "num_beams": 1
+  },
+  "peft": {
+    "method": "LoRA",
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": "all-linear",
+    "learning_rate": 0.0002,
+    "optimizer": "adamw_torch",
+    "scheduler": "cosine",
+    "per_device_batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "effective_batch_size": 16,
+    "epochs": 3,
+    "maximum_sequence_length": 512,
+    "quantization": "none",
+    "checkpoint_selection": "lowest development loss"
+  },
+  "parser": {
+    "version": "strict-json-list-v1",
+    "case_normalization": true,
+    "whitespace_normalization": true,
+    "deduplicate_valid_labels": true,
+    "synonym_mapping": false,
+    "prose_recovery": false
+  },
+  "metrics": {
+    "label_order": [
+      "anger",
+      "anticipation",
+      "disgust",
+      "fear",
+      "joy",
+      "sadness",
+      "surprise",
+      "trust"
+    ],
+    "primary": [
+      "micro_f1",
+      "sample_jaccard"
+    ],
+    "secondary": [
+      "macro_f1",
+      "micro_precision",
+      "micro_recall",
+      "hamming_loss"
+    ],
+    "diagnostic": [
+      "per_label_precision",
+      "per_label_recall",
+      "per_label_f1",
+      "per_label_support",
+      "exact_match_ratio",
+      "malformed_output_rate"
+    ],
+    "zero_division": 0.0
+  },
+  "data": {
+    "test_path": "data/splits/test.tsv",
+    "test_sha256": "2373682101c9b712f98d047dde88eb58db81260d02f3c33754807b5a44b53326",
+    "five_shot_path": "configs/five_shot_examples.json",
+    "five_shot_sha256": "feab48dd105391b3e34b9736878d2c57d4aae71fc5a85e7f0177a735ffa463ca"
+  },
+  "frozen_at_utc": "2026-11-02T12:40:50.051817+00:00"
+}

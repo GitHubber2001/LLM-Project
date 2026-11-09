@@ -1,0 +1,62 @@
+{
+  "status": "COMPLETED",
+  "base_model_checkpoint_id": "Qwen/Qwen2.5-3B-Instruct",
+  "base_model_checkpoint_path": "models/qwen",
+  "condition": "turkish_peft",
+  "configuration": {
+    "version": 1,
+    "condition": "turkish_peft",
+    "model_family": "qwen",
+    "training_languages": [
+      "tr"
+    ],
+    "development_languages": [
+      "tr"
+    ],
+    "train_data": "data/peft/turkish_peft_train.jsonl",
+    "dev_data": "data/peft/turkish_peft_dev.jsonl",
+    "method": "LoRA",
+    "lora": {
+      "target_modules": "all-linear",
+      "rank": 16,
+      "alpha": 32,
+      "dropout": 0.05,
+      "bias": "none"
+    },
+    "learning_rate": 0.0002,
+    "optimizer": "adamw_torch",
+    "scheduler": "cosine",
+    "per_device_batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "effective_batch_size": 16,
+    "epochs": 3,
+    "maximum_sequence_length": 512,
+    "quantization": "none",
+    "checkpoint_selection": "lowest development loss",
+    "seed": 42,
+    "output_directory": "results/peft/checkpoints/turkish_peft"
+  },
+  "train_examples": 4852,
+  "development_examples": 1386,
+  "best_checkpoint": "/scratch/s5051150/llm_xed_project/results/peft/checkpoints/turkish_peft/checkpoint-304",
+  "best_metric": 0.48373496532440186,
+  "train_metrics": {
+    "train_runtime": 1650.8216,
+    "train_samples_per_second": 8.817,
+    "train_steps_per_second": 0.552,
+    "total_flos": 5.007620945343283e+16,
+    "train_loss": 0.28241743421868276,
+    "epoch": 3.0
+  },
+  "software_versions": {
+    "python": "3.9.25",
+    "torch": "2.8.0+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.17.1"
+  },
+  "runtime": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "device": "NVIDIA A100-PCIE-40GB"
+  }
+}

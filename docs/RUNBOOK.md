@@ -104,6 +104,14 @@ This records the model choices, verified chat-template modes and hashes, selecte
 
 ## 8. Run all thirteen TEST evaluations once
 
+For a fresh reproduction run, complete Step 7 first to freeze `configs/final_experiment_config.yaml`.
+
+For reproducing the reported experiments, the archived configuration is available at `configs/final_experiment_config.frozen.yaml`.
+Use this file with `--final-config` and the corresponding original model checkpoints and LoRA adapters.
+
+The commands below show the original experiment output filenames.
+For a new reproduction run, change each `--output` path to a new filename before executing it. Do not overwrite the saved predictions.
+
 Prompting:
 
 ```bash

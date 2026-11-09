@@ -2,7 +2,7 @@
 
 Real model experiments have been completed in the current environment.
 
-- `master_results.csv` is the authoritative final experiment matrix. TEST metric cells remain empty until the final evaluation is performed.
+- `master_results.csv` contains the recorded metrics for all 13 final TEST evaluations.
 - `predictions/` contains raw and parsed JSONL prediction records for the main experiments.
 - `metrics/` contains overall JSON and per-label CSV files generated from real predictions.
 - `analysis/` contains human-review candidate tables after predictions exist.

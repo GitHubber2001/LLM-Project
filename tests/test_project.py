@@ -192,7 +192,7 @@ class ArtifactTests(unittest.TestCase):
         ):
             self.assertIn(required, rules)
 
-    def test_blocked_results_have_no_metrics(self) -> None:
+    def test_completed_results_have_no_metrics(self) -> None:
         with (ROOT / "results" / "master_results.csv").open(
             "r", encoding="utf-8", newline=""
         ) as handle:
@@ -209,9 +209,9 @@ class ArtifactTests(unittest.TestCase):
             "malformed_output_rate",
         )
         for row in rows:
-            self.assertEqual(row["status"], "BLOCKED")
-            self.assertTrue(row["blocker"])
-            self.assertTrue(all(row[field] == "" for field in metric_fields))
+            self.assertEqual(row["status"], "COMPLETED")
+            self.assertFalse(row["blocker"])
+            self.assertTrue(all(row[field] != "" for field in metric_fields))
 
 
 if __name__ == "__main__":

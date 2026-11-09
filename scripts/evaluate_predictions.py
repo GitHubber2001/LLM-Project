@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from xed_project.constants import LABELS  # noqa: E402
 from xed_project.io_utils import (  # noqa: E402
     read_jsonl,
+    read_tsv,
     write_csv_atomic,
     write_json_atomic,
 )
@@ -75,6 +76,39 @@ def validate_records(rows: list[dict[str, Any]]) -> dict[str, str]:
     return result
 
 
+def validate_against_split(rows, descriptors):
+    split = descriptors["split"]
+    language = descriptors["language"]
+
+    if split not in ("train", "dev", "test") or language not in ("en", "tr"):
+        raise ValueError("Invalid split or language")
+
+    _, split_rows = read_tsv(ROOT / "data" / "splits" / f"{split}.tsv")
+    expected = {row["alignment_id"]: row for row in split_rows}
+
+    if len(expected) != len(split_rows):
+        raise ValueError("Duplicate IDs in reference split")
+
+    prediction_ids = {row["alignment_id"] for row in rows}
+
+    if len(prediction_ids) != len(rows):
+        raise ValueError("Duplicate prediction IDs")
+
+    if prediction_ids != set(expected):
+        raise ValueError("Missing or unexpected prediction IDs")
+
+    text_column = "english_text" if language == "en" else "turkish_text"
+
+    for row in rows:
+        source = expected[row["alignment_id"]]
+
+        if row["gold_labels"] != json.loads(source["labels"]):
+            raise ValueError("Gold labels do not match dataset")
+
+        if row["input_text"] != source[text_column]:
+            raise ValueError("Input text does not match dataset")
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--predictions", type=Path, required=True)
@@ -87,6 +121,7 @@ def main() -> None:
     args = parse_args()
     rows = read_jsonl(args.predictions)
     descriptors = validate_records(rows)
+    validate_against_split(rows, descriptors)
     flags = None
     if all(isinstance(row.get("malformed"), bool) for row in rows):
         flags = [bool(row["malformed"]) for row in rows]

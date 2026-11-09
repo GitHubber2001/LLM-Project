@@ -170,4 +170,10 @@ A fresh training run must use its own verified checkpoint and adapter informatio
 
 The primary metrics are micro-averaged F1 and sample-averaged Jaccard index.
 
-Additional metrics include macro F1, micro precision and recall, Hamming loss, exact-match ratio, per-emotion scores,
+Additional metrics include macro F1, micro precision and recall, Hamming loss, exact-match ratio, per-emotion scores, and malformed-output rate.
+
+All 13 final test results are available in `results/master_results.csv`.
+
+Detailed predictions and metrics are stored in `results/predictions/` and `results/metrics/`.
+
+See `docs/RUNBOOK.md` for reproduction instructions.
